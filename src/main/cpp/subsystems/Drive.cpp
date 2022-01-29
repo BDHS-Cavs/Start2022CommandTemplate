@@ -15,29 +15,26 @@ Drive::Drive(){
     SetName("Drive");
     SetSubsystem("Drive");
 
- AddChild("DifferentialDrive", &m_differentialDrive);
- m_differentialDrive.SetSafetyEnabled(true);
- m_differentialDrive.SetExpiration(0.1_s);
- m_differentialDrive.SetMaxOutput(1.0);
+    AddChild("DifferentialDrive", &m_differentialDrive);
+    m_differentialDrive.SetSafetyEnabled(true);
+    m_differentialDrive.SetExpiration(0.1_s);
+    m_differentialDrive.SetMaxOutput(1.0);
 
+    AddChild("m_controllerRight", &m_controllerRight);
 
- AddChild("m_controllerRight", &m_controllerRight);
- 
+    AddChild("m_rightFront", &m_rightFront);
+    m_rightFront.SetInverted(true);
 
- AddChild("m_rightFront", &m_rightFront);
- m_rightFront.SetInverted(true);
+    AddChild("m_rightRear", &m_rightRear);
+    m_rightRear.SetInverted(false);
 
- AddChild("m_rightRear", &m_rightRear);
- m_rightRear.SetInverted(false);
+    AddChild("m_controllerLeft", &m_controllerLeft);
 
- AddChild("m_controllerLeft", &m_controllerLeft);
- 
+    AddChild("m_leftFront", &m_leftFront);
+    m_leftFront.SetInverted(true);
 
- AddChild("m_leftFront", &m_leftFront);
- m_leftFront.SetInverted(true);
-
- AddChild("m_leftRear", &m_leftRear);
- m_leftRear.SetInverted(false);
+    AddChild("m_leftRear", &m_leftRear);
+    m_leftRear.SetInverted(false);
 }
 
 void Drive::Periodic() {
