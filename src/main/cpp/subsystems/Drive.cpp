@@ -26,12 +26,12 @@ Drive::Drive(){
     m_rightFront.SetInverted(true);
 
     AddChild("m_rightRear", &m_rightRear);
-    m_rightRear.SetInverted(false);
+    m_rightRear.SetInverted(true);
 
     AddChild("m_controllerLeft", &m_controllerLeft);
 
     AddChild("m_leftFront", &m_leftFront);
-    m_leftFront.SetInverted(true);
+    m_leftFront.SetInverted(false);
 
     AddChild("m_leftRear", &m_leftRear);
     m_leftRear.SetInverted(false);
@@ -48,5 +48,5 @@ void Drive::SimulationPeriodic() {
 // Functions called by robot commands
 void Drive::Motivate(double leftSpeed, double rightSpeed) {
 
-    m_differentialDrive.TankDrive(leftSpeed, rightSpeed, true); 
+    m_differentialDrive.ArcadeDrive(leftSpeed,rightSpeed, true);
 }
