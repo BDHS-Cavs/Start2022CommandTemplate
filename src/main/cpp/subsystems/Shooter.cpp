@@ -20,7 +20,7 @@ Shooter::Shooter(){
 
     m_shooterMotor.SetInverted(false);
 }
-
+∏
 void Shooter::Periodic() {
     // Put code here to be run every loop
 }
@@ -37,4 +37,9 @@ void Shooter::Intake(){
 void Shooter::Expel(){
     // shoot balls
     m_shooterMotor.Set(-0.5); //TODO: Will need to be tuned
+}
+
+void Shooter::ShooterStop(){
+    // stop the shooter
+    m_shooterMotor.Set(0); //TODO: Will need to be tuned
 }

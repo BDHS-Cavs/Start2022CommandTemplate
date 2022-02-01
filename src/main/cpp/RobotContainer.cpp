@@ -50,6 +50,10 @@ RobotContainer* RobotContainer::GetInstance() {
 }
 
 void RobotContainer::ConfigureButtonBindings() {
+m_controllerButton6.WhenHeld(IntakeCommand(&m_shooter), true);
+m_controllerButton7.WhenHeld(ShootCommand(&m_shooter), true);
+m_controllerButton1.WhenHeld(ArmRaise(&m_arm), true);
+m_controllerButton3.WhenHeld(ArmLower(&m_arm), true);
 }
 
 frc::Joystick* RobotContainer::getJoystick() {

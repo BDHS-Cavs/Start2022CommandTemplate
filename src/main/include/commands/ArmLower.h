@@ -10,19 +10,21 @@
 
 #pragma once
 
-#include <frc2/command/SubsystemBase.h>
-#include <frc/motorcontrol/Spark.h>
+#include <frc2/command/CommandHelper.h>
+#include <frc2/command/CommandBase.h>
 
-class Shooter: public frc2::SubsystemBase {
-private:
-frc::Spark m_shooterMotor{4};
+#include "subsystems/Arm.h"
 
+class ArmLower: public frc2::CommandHelper<frc2::CommandBase, ArmLower> {
 public:
-Shooter();
+    explicit ArmLower(Arm* m_arm);
 
-    void Periodic() override;
-    void SimulationPeriodic() override;
-    void Intake();
-    void Expel();
-    void ShooterStop();
+void Initialize() override;
+void Execute() override;
+bool IsFinished() override;
+void End(bool interrupted) override;
+bool RunsWhenDisabled() const override;
+
+private:
+Arm* m_arm;
 };

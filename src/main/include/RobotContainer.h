@@ -14,11 +14,13 @@
 
 #include <frc/smartdashboard/SendableChooser.h>
 #include <frc2/command/Command.h>
+#include "subsystems/Shooter.h"
+#include "commands/IntakeCommand.h"
+#include "commands/ShootCommand.h"
 #include <frc/Joystick.h>
 #include <frc/XboxController.h>
+#include <frc2/command/button/JoystickButton.h>
 
-#include "commands/AutonomousCommand.h"
-#include "subsystems/Drive.h"
 
 class RobotContainer {
 
@@ -27,7 +29,8 @@ public:
     frc2::Command* GetAutonomousCommand();
     static RobotContainer* GetInstance();
 
-    // The robot's subsystems
+// The robot's subsystems
+Shooter   m_shooter;
     Drive m_drive;
 
     // Get the control values

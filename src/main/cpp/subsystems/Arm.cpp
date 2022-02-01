@@ -13,6 +13,13 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 
 Arm::Arm(){
+    SetName("Arm");
+    SetSubsystem("Arm");
+
+    AddChild("ArmMotorLeft", &m_armMotorLeft);
+    AddChild("ArmMotorRight", &m_armMotorRight);
+    m_armMotorLeft.SetInverted(false);
+    m_armMotorRight.SetInverted(false);
 }
 
 void Arm::Periodic() {
@@ -21,3 +28,14 @@ void Arm::Periodic() {
 void Arm::SimulationPeriodic() {
 }
 // Put methods for controlling this subsystem here and call from commands
+void Arm::ArmRaise(){
+    // Raise Arm
+    m_armMotorLeft.Set(0.5); //TODO: Will need to be tuned
+    m_armMotorRight.Set(0.5); //TODO: Will need to be tuned
+}
+
+void Arm::ArmLower(){
+    // Lower Arm
+    m_armMotorLeft.Set(-0.5); //TODO: Will need to be tuned
+	m_armMotorRight.Set(-0.5); //TODO: Will need to be tuned
+}

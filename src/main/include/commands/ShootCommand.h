@@ -13,3 +13,19 @@
 #include <frc2/command/CommandHelper.h>
 #include <frc2/command/CommandBase.h>
 
+#include "subsystems/Shooter.h"
+
+class ShootCommand: public frc2::CommandHelper<frc2::CommandBase, ShootCommand> {
+public:
+    explicit ShootCommand(Shooter* m_shooter);
+
+void Initialize() override;
+void Execute() override;
+bool IsFinished() override;
+void End(bool interrupted) override;
+bool RunsWhenDisabled() const override;
+
+
+private:
+Shooter* m_shooter;
+};
