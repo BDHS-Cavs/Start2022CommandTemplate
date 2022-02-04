@@ -12,15 +12,24 @@
 
 #pragma once
 
-#include <frc/smartdashboard/SendableChooser.h>
-#include <frc2/command/Command.h>
-#include "subsystems/Shooter.h"
-#include "commands/IntakeCommand.h"
-#include "commands/ShootCommand.h"
+// frc includes
 #include <frc/Joystick.h>
+#include <frc/smartdashboard/SendableChooser.h>
 #include <frc/XboxController.h>
+
+#include <frc2/command/Command.h>
 #include <frc2/command/button/JoystickButton.h>
 
+// our includes
+#include "commands/ArmLowerCommand.h"
+#include "commands/ArmRaiseCommand.h"
+#include "commands/AutonomousCommand.h"
+#include "commands/IntakeCommand.h"
+#include "commands/ShootCommand.h"
+
+#include "subsystems/Arm.h"
+#include "subsystems/Drive.h"
+#include "subsystems/Shooter.h"
 
 class RobotContainer {
 
@@ -29,9 +38,10 @@ public:
     frc2::Command* GetAutonomousCommand();
     static RobotContainer* GetInstance();
 
-// The robot's subsystems
-Shooter   m_shooter;
-    Drive m_drive;
+    // The robot's subsystems
+    Arm     m_arm;
+    Shooter m_shooter;
+    Drive   m_drive;
 
     // Get the control values
     frc::Joystick *getJoystick();

@@ -10,21 +10,22 @@
 
 #pragma once
 
-#include <frc2/command/CommandHelper.h>
 #include <frc2/command/CommandBase.h>
+#include <frc2/command/CommandHelper.h>
 
 #include "subsystems/Shooter.h"
 
 class IntakeCommand: public frc2::CommandHelper<frc2::CommandBase, IntakeCommand> {
+
 public:
     explicit IntakeCommand(Shooter* m_shooter);
 
-void Initialize() override;
-void Execute() override;
-bool IsFinished() override;
-void End(bool interrupted) override;
-bool RunsWhenDisabled() const override;
+    void Initialize() override;
+    void Execute() override;
+    bool IsFinished() override;
+    void End(bool interrupted) override;
+    bool RunsWhenDisabled() const override;
 
 private:
-Shooter* m_shooter;
+    Shooter* m_shooter;
 };

@@ -18,24 +18,33 @@ Arm::Arm(){
 
     AddChild("ArmMotorLeft", &m_armMotorLeft);
     AddChild("ArmMotorRight", &m_armMotorRight);
-    m_armMotorLeft.SetInverted(false);
+    
+	m_armMotorLeft.SetInverted(false);
     m_armMotorRight.SetInverted(false);
 }
 
 void Arm::Periodic() {
+    // Put code here to be run every loop
 }
 
 void Arm::SimulationPeriodic() {
 }
+
 // Put methods for controlling this subsystem here and call from commands
 void Arm::ArmRaise(){
     // Raise Arm
-    m_armMotorLeft.Set(0.5); //TODO: Will need to be tuned
+    m_armMotorLeft.Set(0.5);  //TODO: Will need to be tuned
     m_armMotorRight.Set(0.5); //TODO: Will need to be tuned
 }
 
 void Arm::ArmLower(){
     // Lower Arm
-    m_armMotorLeft.Set(-0.5); //TODO: Will need to be tuned
+    m_armMotorLeft.Set(-0.5);  //TODO: Will need to be tuned
 	m_armMotorRight.Set(-0.5); //TODO: Will need to be tuned
+}
+
+void Arm::ArmStop(){
+    // stop the arm
+    m_armMotorLeft.Set(0.0);
+	m_armMotorRight.Set(0.0);
 }

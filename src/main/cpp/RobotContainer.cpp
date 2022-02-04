@@ -11,17 +11,17 @@
 // ROBOTBUILDER TYPE: RobotContainer.
 
 #include "RobotContainer.h"
+
 #include <frc2/command/ParallelRaceGroup.h>
 #include <frc2/command/RunCommand.h>
 #include <frc/smartdashboard/SmartDashboard.h>
-
-
 
 RobotContainer* RobotContainer::m_robotContainer = NULL;
 
 RobotContainer::RobotContainer() : m_autonomousCommand() {
     frc::SmartDashboard::PutData(&m_drive);
-
+    frc::SmartDashboard::PutData(&m_shooter);
+    frc::SmartDashboard::PutData(&m_arm);
 
     // SmartDashboard Buttons
     frc::SmartDashboard::PutData("Autonomous Command", new AutonomousCommand());
@@ -50,10 +50,15 @@ RobotContainer* RobotContainer::GetInstance() {
 }
 
 void RobotContainer::ConfigureButtonBindings() {
+frc2::JoystickButton m_controllerButton7{&m_controller, (int)frc::XboxController::Button::kStart};
+frc2::JoystickButton m_controllerButton6{&m_controller, (int)frc::XboxController::Button::kRightBumper};
+frc2::JoystickButton m_controllerButton3{&m_controller, (int)frc::XboxController::Button::kY};
+frc2::JoystickButton m_controllerButton1{&m_controller, (int)frc::XboxController::Button::kB};
+
+m_controllerButton1.WhenHeld(ArmRaiseCommand(&m_arm), true);
+m_controllerButton3.WhenHeld(ArmLowerCommand(&m_arm), true);
 m_controllerButton6.WhenHeld(IntakeCommand(&m_shooter), true);
 m_controllerButton7.WhenHeld(ShootCommand(&m_shooter), true);
-m_controllerButton1.WhenHeld(ArmRaise(&m_arm), true);
-m_controllerButton3.WhenHeld(ArmLower(&m_arm), true);
 }
 
 frc::Joystick* RobotContainer::getJoystick() {

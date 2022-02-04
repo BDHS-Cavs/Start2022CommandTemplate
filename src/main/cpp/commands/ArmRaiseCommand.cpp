@@ -8,35 +8,36 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 
-#include "commands/ArmRaise.h"
+#include "commands/ArmRaiseCommand.h"
 
-ArmRaise::ArmRaise(Arm* m_arm)
+ArmRaiseCommand::ArmRaiseCommand(Arm* m_arm)
 :m_arm(m_arm){
 
     // Use AddRequirements() here to declare subsystem dependencies
     // eg. AddRequirements(m_Subsystem);
-    SetName("ArmRaise");
+    SetName("ArmRaiseCommand");
     AddRequirements(m_arm);
 }
 
 // Called just before this Command runs the first time
-void ArmRaise::Initialize() {
+void ArmRaiseCommand::Initialize() {
    m_arm->ArmRaise();
 }
 
 // Called repeatedly when this Command is scheduled to run
-void ArmRaise::Execute() {
+void ArmRaiseCommand::Execute() {
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool ArmRaise::IsFinished() {
+bool ArmRaiseCommand::IsFinished() {
     return false;
 }
 
 // Called once after isFinished returns true
-void ArmRaise::End(bool interrupted) {
+void ArmRaiseCommand::End(bool interrupted) {
+    m_arm->ArmStop();
 }
 
-bool ArmRaise::RunsWhenDisabled() const {
+bool ArmRaiseCommand::RunsWhenDisabled() const {
     return false;
 }

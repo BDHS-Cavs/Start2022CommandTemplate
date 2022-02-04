@@ -10,15 +10,16 @@
 
 #pragma once
 
-#include <frc2/command/SubsystemBase.h>
 #include <frc/motorcontrol/Spark.h>
+#include <frc2/command/SubsystemBase.h>
 
 class Shooter: public frc2::SubsystemBase {
+
 private:
-frc::Spark m_shooterMotor{4};
+    frc::Spark m_shooterMotor{4};
 
 public:
-Shooter();
+    Shooter();
 
     void Periodic() override;
     void SimulationPeriodic() override;

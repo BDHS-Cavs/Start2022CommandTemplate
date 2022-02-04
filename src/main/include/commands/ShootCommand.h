@@ -16,16 +16,16 @@
 #include "subsystems/Shooter.h"
 
 class ShootCommand: public frc2::CommandHelper<frc2::CommandBase, ShootCommand> {
+
 public:
     explicit ShootCommand(Shooter* m_shooter);
 
-void Initialize() override;
-void Execute() override;
-bool IsFinished() override;
-void End(bool interrupted) override;
-bool RunsWhenDisabled() const override;
-
+    void Initialize() override;
+    void Execute() override;
+    bool IsFinished() override;
+    void End(bool interrupted) override;
+    bool RunsWhenDisabled() const override;
 
 private:
-Shooter* m_shooter;
+    Shooter* m_shooter;
 };

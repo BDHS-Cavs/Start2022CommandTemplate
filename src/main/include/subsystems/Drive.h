@@ -10,29 +10,30 @@
 
 #pragma once
 
-#include <frc2/command/SubsystemBase.h>
 #include <frc/drive/DifferentialDrive.h>
 #include <frc/motorcontrol/MotorControllerGroup.h>
 #include <frc/motorcontrol/Spark.h>
+#include <frc2/command/SubsystemBase.h>
 
 class Drive: public frc2::SubsystemBase {
+
 private:
-// left
-frc::Spark m_leftFront{0};
-frc::Spark m_leftRear{1};
-frc::MotorControllerGroup m_controllerLeft{m_leftFront, m_leftRear};
+    // left
+    frc::Spark m_leftFront{0};
+    frc::Spark m_leftRear{1};
+    frc::MotorControllerGroup m_controllerLeft{m_leftFront, m_leftRear};
 
-// right
-frc::Spark m_rightFront{2};
-frc::Spark m_rightRear{3};
-frc::MotorControllerGroup m_controllerRight{m_rightFront, m_rightRear};
+    // right
+    frc::Spark m_rightFront{2};
+    frc::Spark m_rightRear{3};
+    frc::MotorControllerGroup m_controllerRight{m_rightFront, m_rightRear};
 
-frc::DifferentialDrive m_differentialDrive{m_controllerLeft, m_controllerRight};
+    frc::DifferentialDrive m_differentialDrive{m_controllerLeft, m_controllerRight};
 
 public:
-Drive();
+    Drive();
+	
     void Periodic() override;
     void SimulationPeriodic() override;
     void Motivate(double leftSpeed, double rightSpeed);
 };
-

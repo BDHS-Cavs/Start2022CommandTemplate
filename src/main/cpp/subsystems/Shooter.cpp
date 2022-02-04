@@ -8,8 +8,8 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 
-
 #include "subsystems/Shooter.h"
+
 #include <frc/smartdashboard/SmartDashboard.h>
 
 Shooter::Shooter(){
@@ -20,7 +20,7 @@ Shooter::Shooter(){
 
     m_shooterMotor.SetInverted(false);
 }
-∏
+
 void Shooter::Periodic() {
     // Put code here to be run every loop
 }
@@ -41,5 +41,5 @@ void Shooter::Expel(){
 
 void Shooter::ShooterStop(){
     // stop the shooter
-    m_shooterMotor.Set(0); //TODO: Will need to be tuned
+    m_shooterMotor.Set(0.0); //TODO: Will need to be tuned
 }

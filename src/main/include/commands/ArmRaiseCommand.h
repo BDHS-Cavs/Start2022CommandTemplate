@@ -10,21 +10,23 @@
 
 #pragma once
 
-#include <frc2/command/CommandHelper.h>
 #include <frc2/command/CommandBase.h>
+#include <frc2/command/CommandHelper.h>
 
 #include "subsystems/Arm.h"
 
-class ArmLower: public frc2::CommandHelper<frc2::CommandBase, ArmLower> {
-public:
-    explicit ArmLower(Arm* m_arm);
+class ArmRaiseCommand: public frc2::CommandHelper<frc2::CommandBase, ArmRaiseCommand> {
 
-void Initialize() override;
-void Execute() override;
-bool IsFinished() override;
-void End(bool interrupted) override;
-bool RunsWhenDisabled() const override;
+public:
+
+    explicit ArmRaiseCommand(Arm* m_arm);
+
+    void Initialize() override;
+    void Execute() override;
+    bool IsFinished() override;
+    void End(bool interrupted) override;
+    bool RunsWhenDisabled() const override;
 
 private:
-Arm* m_arm;
+    Arm* m_arm;
 };

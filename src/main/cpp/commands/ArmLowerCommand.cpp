@@ -8,35 +8,36 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 
-#include "commands/ArmLower.h"
+#include "commands/ArmLowerCommand.h"
 
-ArmLower::ArmLower(Arm* m_arm)
+ArmLowerCommand::ArmLowerCommand(Arm* m_arm)
 :m_arm(m_arm){
 
     // Use AddRequirements() here to declare subsystem dependencies
     // eg. AddRequirements(m_Subsystem);
-    SetName("ArmLower");
+    SetName("ArmLowerCommand");
     AddRequirements(m_arm);
 }
 
 // Called just before this Command runs the first time
-void ArmLower::Initialize() {
+void ArmLowerCommand::Initialize() {
    m_arm->ArmLower();
 }
 
 // Called repeatedly when this Command is scheduled to run
-void ArmLower::Execute() {
+void ArmLowerCommand::Execute() {
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool ArmLower::IsFinished() {
+bool ArmLowerCommand::IsFinished() {
     return false;
 }
 
 // Called once after isFinished returns true
-void ArmLower::End(bool interrupted) {
+void ArmLowerCommand::End(bool interrupted) {
+    m_arm->ArmStop();
 }
 
-bool ArmLower::RunsWhenDisabled() const {
+bool ArmLowerCommand::RunsWhenDisabled() const {
     return false;
 }
