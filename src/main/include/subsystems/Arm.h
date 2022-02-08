@@ -10,6 +10,7 @@
 
 #pragma once
 
+#include <frc/DigitalInput.h>
 #include <frc/motorcontrol/Spark.h>
 #include <frc2/command/SubsystemBase.h>
 
@@ -18,7 +19,9 @@ class Arm: public frc2::SubsystemBase {
 private:
     frc::Spark m_armMotorLeft{5};
     frc::Spark m_armMotorRight{6};
-
+    frc::DigitalInput topLimitSwitch{5};
+    frc::DigitalInput bottomLimitSwitch{6};
+// To-do: Check channel slots
 public:
     Arm();
     void Periodic() override;
