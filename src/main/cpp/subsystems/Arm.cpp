@@ -32,24 +32,30 @@ void Arm::SimulationPeriodic() {
 
 // Put methods for controlling this subsystem here and call from commands
 void Arm::ArmRaise(){
+
     // Raise Arm
-    if (topLimitSwitch.Get()) {
+    if (topLimitSwitch.Get())
+    {
         this->ArmStop();
     }
-    else {
-        m_armMotorLeft.Set(0.5);  //TODO: Will need to be tuned
-        m_armMotorRight.Set(0.5); //TODO: Will need to be tuned
+    else
+    {
+        m_armMotorLeft.Set(0.5);  // TODO: Will need to be tuned
+        m_armMotorRight.Set(0.5); // TODO: Will need to be tuned
     }
 }
 
 void Arm::ArmLower(){
+
     // Lower Arm
-    if (bottomLimitSwitch.Get()) {
+    if (bottomLimitSwitch.Get())
+    {
         this->ArmStop();
     }
-    else {
-        m_armMotorLeft.Set(-0.5);  //TODO: Will need to be tuned
-        m_armMotorRight.Set(-0.5); //TODO: Will need to be tuned
+    else
+    {
+        m_armMotorLeft.Set(-0.5);  // TODO: Will need to be tuned
+        m_armMotorRight.Set(-0.5); // TODO: Will need to be tuned
     }
 }
 
