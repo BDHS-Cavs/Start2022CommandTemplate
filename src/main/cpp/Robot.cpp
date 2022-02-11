@@ -15,7 +15,9 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <frc2/command/CommandScheduler.h>
 
-void Robot::RobotInit() {}
+void Robot::RobotInit() {
+  my_gyro.Calibrate();
+}
 
 /**
  * This function is called every robot packet, no matter the mode. Use
@@ -66,7 +68,11 @@ void Robot::TeleopInit() {
 /**
  * This function is called periodically during operator control.
  */
-void Robot::TeleopPeriodic() {}
+void Robot::TeleopPeriodic() {
+  // tell us some details about our gyro
+  frc::SmartDashboard::PutNumber("Gyro Angle", my_gyro.GetAngle());
+  frc::SmartDashboard::PutNumber("Gyro Rotation Speed", my_gyro.GetRate());
+}
 
 /**
  * This function is called periodically during test mode.
