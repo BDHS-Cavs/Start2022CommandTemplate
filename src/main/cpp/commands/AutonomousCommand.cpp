@@ -12,7 +12,7 @@
 
 #include "commands/AutonomousCommand.h"
 
-AutonomousCommand::AutonomousCommand(){
+AutonomousCommand::AutonomousCommand(Drive* m_drive, Limelight* m_limelight){
 
     // Use AddRequirements() here to declare subsystem dependencies
     // eg. AddRequirements(m_Subsystem);
