@@ -19,9 +19,10 @@
 RobotContainer* RobotContainer::m_robotContainer = NULL;
 
 RobotContainer::RobotContainer() : m_autonomousCommand() {
-    frc::SmartDashboard::PutData(&m_drive);
-    frc::SmartDashboard::PutData(&m_shooter);
     frc::SmartDashboard::PutData(&m_arm);
+    frc::SmartDashboard::PutData(&m_drive);
+    frc::SmartDashboard::PutData(&m_limelight);
+    frc::SmartDashboard::PutData(&m_shooter);
 
     // SmartDashboard Buttons
     frc::SmartDashboard::PutData("Autonomous Command", new AutonomousCommand());

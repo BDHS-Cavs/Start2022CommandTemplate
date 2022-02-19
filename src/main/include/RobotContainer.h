@@ -29,6 +29,7 @@
 
 #include "subsystems/Arm.h"
 #include "subsystems/Drive.h"
+#include "subsystems/Limelight.h"
 #include "subsystems/Shooter.h"
 
 class RobotContainer {
@@ -39,9 +40,10 @@ public:
     static RobotContainer* GetInstance();
 
     // The robot's subsystems
-    Arm     m_arm;
-    Shooter m_shooter;
-    Drive   m_drive;
+    Arm       m_arm;
+    Drive     m_drive;
+    Limelight m_limelight;
+    Shooter   m_shooter;
 
     // Get the control values
     frc::Joystick *getJoystick();
