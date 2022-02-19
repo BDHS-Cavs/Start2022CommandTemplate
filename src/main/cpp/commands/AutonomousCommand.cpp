@@ -11,14 +11,17 @@
 // ROBOTBUILDER TYPE: Command.
 
 #include "commands/AutonomousCommand.h"
+#include <iostream> //for cout
 
-AutonomousCommand::AutonomousCommand(Drive* m_drive, Limelight* m_limelight){
+AutonomousCommand::AutonomousCommand(Drive* m_drive, Limelight* m_limelight)
+:m_drive(m_drive),
+m_limelight(m_limelight){
 
     // Use AddRequirements() here to declare subsystem dependencies
     // eg. AddRequirements(m_Subsystem);
     SetName("AutonomousCommand");
-
-
+    AddRequirements(m_drive);
+    AddRequirements(m_limelight);
 }
 
 // Called just before this Command runs the first time
@@ -28,7 +31,7 @@ void AutonomousCommand::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void AutonomousCommand::Execute() {
-
+    cout << "Now in Autonomous Mode!";
 }
 
 // Make this return true when this Command no longer needs to run execute()
