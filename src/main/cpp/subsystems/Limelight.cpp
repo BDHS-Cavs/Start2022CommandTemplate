@@ -19,3 +19,6 @@ void Limelight::Periodic() {
 
 void Limelight::SimulationPeriodic() {
 }
+
+void Limelight::Update() {
+}

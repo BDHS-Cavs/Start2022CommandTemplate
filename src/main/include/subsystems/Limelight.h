@@ -25,4 +25,5 @@ public:
 
     void Periodic() override;
     void SimulationPeriodic() override;
+    void Update();
 };
