@@ -14,9 +14,12 @@
 #include <frc2/command/CommandBase.h>
 #include <frc2/command/CommandHelper.h>
 
+#include "subsystems/Drive.h"
+#include "subsystems/Limelight.h"
+
 class AutonomousCommand: public frc2::CommandHelper<frc2::CommandBase, AutonomousCommand> {
 public:
-    explicit AutonomousCommand();
+    explicit AutonomousCommand(Drive* m_drive, Limelight* m_limelight);
 
 void Initialize() override;
 void Execute() override;
@@ -26,5 +29,6 @@ bool RunsWhenDisabled() const override;
 
 
 private:
-
+    Drive*     m_drive;
+    Limelight* m_limelight;
 };

@@ -21,7 +21,8 @@ private:
     frc::Spark m_armMotorRight{6};
     frc::DigitalInput topLimitSwitch{5};
     frc::DigitalInput bottomLimitSwitch{6};
-// To-do: Check channel slots
+    // TODO: Check channel slots
+
 public:
     Arm();
     void Periodic() override;
