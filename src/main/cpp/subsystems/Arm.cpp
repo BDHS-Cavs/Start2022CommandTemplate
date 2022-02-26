@@ -16,11 +16,9 @@ Arm::Arm(){
     SetName("Arm");
     SetSubsystem("Arm");
 
-    AddChild("ArmMotorLeft", &m_armMotorLeft);
-    AddChild("ArmMotorRight", &m_armMotorRight);
+    AddChild("ArmMotor", &m_armMotor);
     
-	m_armMotorLeft.SetInverted(false);
-    m_armMotorRight.SetInverted(false);
+	m_armMotor.SetInverted(false);
 }
 
 void Arm::Periodic() {
@@ -34,33 +32,16 @@ void Arm::SimulationPeriodic() {
 void Arm::ArmRaise(){
 
     // Raise Arm
-    if (topLimitSwitch.Get())
-    {
-        this->ArmStop();
-    }
-    else
-    {
-        m_armMotorLeft.Set(0.5);  // TODO: Will need to be tuned
-        m_armMotorRight.Set(0.5); // TODO: Will need to be tuned
-    }
+    m_armMotor.Set(0.5); // TODO: Will need to be tuned
 }
 
 void Arm::ArmLower(){
 
     // Lower Arm
-    if (bottomLimitSwitch.Get())
-    {
-        this->ArmStop();
-    }
-    else
-    {
-        m_armMotorLeft.Set(-0.5);  // TODO: Will need to be tuned
-        m_armMotorRight.Set(-0.5); // TODO: Will need to be tuned
-    }
+    m_armMotor.Set(-0.5);  // TODO: Will need to be tuned
 }
 
 void Arm::ArmStop(){
     // stop the arm
-    m_armMotorLeft.Set(0.0);
-	m_armMotorRight.Set(0.0);
+    m_armMotor.Set(0.0);
 }
