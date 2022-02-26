@@ -51,17 +51,17 @@ RobotContainer* RobotContainer::GetInstance() {
 }
 
 void RobotContainer::ConfigureButtonBindings() {
-frc2::JoystickButton m_controllerButton8{&m_controller, (int)frc::XboxController::Button::kBack};
+frc2::JoystickButton m_controllerButton10{&m_controller, (int)frc::XboxController::Button::kStart};
+frc2::JoystickButton m_controllerButton8{&m_controller, (int)frc::XboxController::Button::kRightBumper};
 frc2::JoystickButton m_controllerButton7{&m_controller, (int)frc::XboxController::Button::kLeftBumper};
-frc2::JoystickButton m_controllerButton6{&m_controller, (int)frc::XboxController::Button::kRightBumper};
 frc2::JoystickButton m_controllerButton3{&m_controller, (int)frc::XboxController::Button::kY};
 frc2::JoystickButton m_controllerButton1{&m_controller, (int)frc::XboxController::Button::kB};
 
 m_controllerButton1.WhenHeld(ArmRaiseCommand(&m_arm), true);
 m_controllerButton3.WhenHeld(ArmLowerCommand(&m_arm), true);
-m_controllerButton6.WhenHeld(IntakeCommand(&m_shooter), true);
-m_controllerButton7.WhenHeld(ShootCommand(&m_shooter), true);
-m_controllerButton8.WhenHeld(AutonomousCommand(&m_drive, &m_limelight), true);
+m_controllerButton7.WhenHeld(IntakeCommand(&m_shooter), true);
+m_controllerButton8.WhenHeld(ShootCommand(&m_shooter), true);
+m_controllerButton10.WhenHeld(AutonomousCommand(&m_drive, &m_limelight), true);
 }
 
 frc::Joystick* RobotContainer::getJoystick() {
