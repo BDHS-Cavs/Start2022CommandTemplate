@@ -32,13 +32,13 @@ void Arm::SimulationPeriodic() {
 void Arm::ArmRaise(){
 
     // Raise Arm
-    m_armMotor.Set(0.5); // TODO: Will need to be tuned
+    m_armMotor.Set(1.0); // TODO: Will need to be tuned
 }
 
 void Arm::ArmLower(){
 
     // Lower Arm
-    m_armMotor.Set(-0.5);  // TODO: Will need to be tuned
+    m_armMotor.Set(-0.25);  // TODO: Will need to be tuned
 }
 
 void Arm::ArmStop(){
