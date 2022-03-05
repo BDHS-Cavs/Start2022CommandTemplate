@@ -50,3 +50,34 @@ void Drive::Motivate(double leftSpeed, double rightSpeed) {
 
     m_differentialDrive.ArcadeDrive(leftSpeed,rightSpeed, true);
 }
+
+void Drive::AutoMotivate(double currentAngle) {
+
+    double autoLeftSpeed  = 0.1;
+    double autoRightSpeed = 0.0;
+    double targetAngle    = 180.0; //TODO - find a way to calculate targetAngle
+
+   //calculate target angle
+   //targetAngle = (currentAngle - 180.0); //thar be dragons here!
+
+    if (this->CompareAngles(currentAngle, targetAngle, 0.01))
+    {
+        {
+            // do nothing
+        }
+    }
+    else
+    {
+        m_differentialDrive.ArcadeDrive(autoLeftSpeed, autoRightSpeed, true);
+    };
+}
+
+bool Drive::CompareAngles(double x, double y, double epsilon = 0.01){
+    if (fabs(x - y) < epsilon){
+        return true;
+    }
+    else
+    {
+        return false;
+    };
+}
