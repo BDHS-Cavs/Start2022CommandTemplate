@@ -18,7 +18,7 @@ class Arm: public frc2::SubsystemBase {
 
 private:
     frc::Spark m_armMotor{4}; //tuned value
-    frc::DigitalInput bottomLimitSwitch{5}; 
+    frc::DigitalInput bottomLimitSwitch{1}; 
 public:
     Arm();
     void Periodic() override;
