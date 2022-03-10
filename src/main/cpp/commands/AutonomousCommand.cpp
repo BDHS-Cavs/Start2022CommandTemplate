@@ -32,6 +32,7 @@ void AutonomousCommand::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void AutonomousCommand::Execute() {
     cout << "Now in Autonomous Mode!";
+    m_drive->AutoMotivate();
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -41,7 +42,8 @@ bool AutonomousCommand::IsFinished() {
 
 // Called once after isFinished returns true
 void AutonomousCommand::End(bool interrupted) {
-
+    cout << "Autonomous Stop!";
+    m_drive->Stop();
 }
 
 bool AutonomousCommand::RunsWhenDisabled() const {

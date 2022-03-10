@@ -35,6 +35,8 @@ Drive::Drive(){
 
     AddChild("m_leftRear", &m_leftRear);
     m_leftRear.SetInverted(false);
+
+    AddChild("m_drive_gyro", &m_drive_gyro);
 }
 
 void Drive::Periodic() {
@@ -51,10 +53,12 @@ void Drive::Motivate(double leftSpeed, double rightSpeed) {
     m_differentialDrive.ArcadeDrive(leftSpeed,rightSpeed, true);
 }
 
-void Drive::AutoMotivate(double currentAngle) {
+void Drive::AutoMotivate() {
 
-    double autoLeftSpeed  = 0.1;
-    double autoRightSpeed = 0.0;
+    double currentAngle = m_drive_gyro.GetAngle();
+
+    double autoLeftSpeed  = 0.0;
+    double autoRightSpeed = 0.1;
     double targetAngle    = 180.0; //TODO - find a way to calculate targetAngle
 
    //calculate target angle
@@ -80,4 +84,9 @@ bool Drive::CompareAngles(double x, double y, double epsilon = 0.01){
     {
         return false;
     };
+}
+
+void Drive::Stop(){
+    // cease your actions!!
+    m_differentialDrive.ArcadeDrive(0.0, 0.0, true);
 }
