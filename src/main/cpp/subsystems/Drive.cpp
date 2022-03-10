@@ -73,11 +73,19 @@ void Drive::AutoMotivate(double currentAngle) {
 }
 
 bool Drive::CompareAngles(double x, double y, double epsilon = 0.01){
-    if (fabs(x - y) < epsilon){
+    if (fabs(x - y) < epsilon)
+    {
         return true;
     }
     else
     {
         return false;
     };
+}
+
+void Drive::Stop(){
+
+    // cease your actions!
+    m_differentialDrive.ArcadeDrive(0.0, 0.0, true);
+
 }

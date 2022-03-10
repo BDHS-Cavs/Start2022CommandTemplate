@@ -16,7 +16,7 @@
 #include <frc2/command/CommandScheduler.h>
 
 void Robot::RobotInit() {
-  my_gyro.Calibrate();
+  m_container->my_gyro.Calibrate();
 }
 
 /**
@@ -54,8 +54,8 @@ void Robot::AutonomousInit() {
 
 void Robot::AutonomousPeriodic() {
   // tell us some details about our gyro
-  frc::SmartDashboard::PutNumber("Gyro Angle", my_gyro.GetAngle());
-  frc::SmartDashboard::PutNumber("Gyro Rotation Speed", my_gyro.GetRate());
+  frc::SmartDashboard::PutNumber("Gyro Angle", m_container->my_gyro.GetAngle());
+  frc::SmartDashboard::PutNumber("Gyro Rotation Speed", m_container->my_gyro.GetRate());
 }
 
 void Robot::TeleopInit() {
@@ -74,8 +74,8 @@ void Robot::TeleopInit() {
  */
 void Robot::TeleopPeriodic() {
   // tell us some details about our gyro
-  frc::SmartDashboard::PutNumber("Gyro Angle", my_gyro.GetAngle());
-  frc::SmartDashboard::PutNumber("Gyro Rotation Speed", my_gyro.GetRate());
+  frc::SmartDashboard::PutNumber("Gyro Angle", m_container->my_gyro.GetAngle());
+  frc::SmartDashboard::PutNumber("Gyro Rotation Speed", m_container->my_gyro.GetRate());
 }
 
 /**

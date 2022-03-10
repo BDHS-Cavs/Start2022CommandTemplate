@@ -19,7 +19,7 @@
 
 class AutonomousCommand: public frc2::CommandHelper<frc2::CommandBase, AutonomousCommand> {
 public:
-    explicit AutonomousCommand(Drive* m_drive, Limelight* m_limelight);
+    explicit AutonomousCommand(Drive* m_drive, Limelight* m_limelight, double gyro_angle);
 
 void Initialize() override;
 void Execute() override;
@@ -31,4 +31,5 @@ bool RunsWhenDisabled() const override;
 private:
     Drive*     m_drive;
     Limelight* m_limelight;
+    double     m_gyro_angle;
 };

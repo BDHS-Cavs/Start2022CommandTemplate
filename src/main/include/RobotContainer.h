@@ -13,6 +13,7 @@
 #pragma once
 
 // frc includes
+#include <frc/ADXRS450_Gyro.h>
 #include <frc/Joystick.h>
 #include <frc/smartdashboard/SendableChooser.h>
 #include <frc/XboxController.h>
@@ -48,6 +49,10 @@ public:
     // Get the control values
     frc::Joystick *getJoystick();
     frc::XboxController *getController();
+
+    // gyro
+    frc::ADXRS450_Gyro my_gyro;
+    double m_gyro_angle = 0.0;
 
 private:
 

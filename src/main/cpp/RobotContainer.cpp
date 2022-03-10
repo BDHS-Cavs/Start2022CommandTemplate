@@ -18,14 +18,14 @@
 
 RobotContainer* RobotContainer::m_robotContainer = NULL;
 
-RobotContainer::RobotContainer() : m_autonomousCommand(&m_drive, &m_limelight) {
+RobotContainer::RobotContainer() : m_autonomousCommand(&m_drive, &m_limelight, m_gyro_angle) {
     frc::SmartDashboard::PutData(&m_arm);
     frc::SmartDashboard::PutData(&m_drive);
     frc::SmartDashboard::PutData(&m_limelight);
     frc::SmartDashboard::PutData(&m_shooter);
 
     // SmartDashboard Buttons
-    frc::SmartDashboard::PutData("Autonomous Command", new AutonomousCommand(&m_drive, &m_limelight));
+    frc::SmartDashboard::PutData("Autonomous Command", new AutonomousCommand(&m_drive, &m_limelight, m_gyro_angle));
 	
     ConfigureButtonBindings();
 
@@ -39,8 +39,10 @@ RobotContainer::RobotContainer() : m_autonomousCommand(&m_drive, &m_limelight) {
         },
          {&m_drive}));
 
-    m_chooser.SetDefaultOption("Autonomous Command", new AutonomousCommand(&m_drive, &m_limelight));
+    m_chooser.SetDefaultOption("Autonomous Command", new AutonomousCommand(&m_drive, &m_limelight, m_gyro_angle));
     frc::SmartDashboard::PutData("Auto Mode", &m_chooser);
+
+   m_gyro_angle = my_gyro.GetAngle();
 }
 
 RobotContainer* RobotContainer::GetInstance() {
@@ -61,7 +63,7 @@ m_controllerButton2.WhenHeld(ArmRaiseCommand(&m_arm), true); // Arm raise (2)
 m_controllerButton4.WhenHeld(ArmLowerCommand(&m_arm), true); // Arm lower (4)
 m_controllerButton5.WhenHeld(IntakeCommand(&m_shooter), true); // Intake (5)
 m_controllerButton6.WhenHeld(ShootCommand(&m_shooter), true); // Shoot (6)
-m_controllerButton8.WhenHeld(AutonomousCommand(&m_drive, &m_limelight), true); // debug Autonomous Mode (8)
+m_controllerButton8.WhenHeld(AutonomousCommand(&m_drive, &m_limelight, m_gyro_angle), true); // debug Autonomous Mode (8)
 }
 
 frc::Joystick* RobotContainer::getJoystick() {
