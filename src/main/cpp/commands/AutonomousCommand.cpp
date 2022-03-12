@@ -11,7 +11,7 @@
 // ROBOTBUILDER TYPE: Command.
 
 #include "commands/AutonomousCommand.h"
-#include <iostream> //for cout
+#include <wpi/raw_ostream.h> // for wpi outs()
 
 AutonomousCommand::AutonomousCommand(Drive* m_drive, Limelight* m_limelight)
 :m_drive(m_drive),
@@ -31,7 +31,7 @@ void AutonomousCommand::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void AutonomousCommand::Execute() {
-    cout << "Now in Autonomous Mode!";
+    wpi::outs() << "Autonomous Execute!\n";
     m_drive->AutoMotivate();
 }
 
@@ -42,7 +42,7 @@ bool AutonomousCommand::IsFinished() {
 
 // Called once after isFinished returns true
 void AutonomousCommand::End(bool interrupted) {
-    cout << "Autonomous Stop!";
+    wpi::outs () << "Autonomous Stop!\n";
     m_drive->Stop();
 }
 

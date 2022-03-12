@@ -10,6 +10,7 @@
 
 #include "subsystems/Drive.h"
 #include <frc/smartdashboard/SmartDashboard.h>
+#include <wpi/raw_ostream.h> // for wpi outs()
 
 Drive::Drive(){
     SetName("Drive");
@@ -55,6 +56,7 @@ void Drive::Motivate(double leftSpeed, double rightSpeed) {
 
 void Drive::AutoMotivate() {
 
+    wpi::outs() << "Drive AutoMotivate!\n";
     double currentAngle = m_drive_gyro.GetAngle();
 
     double autoLeftSpeed  = 0.0;
@@ -87,6 +89,7 @@ bool Drive::CompareAngles(double x, double y, double epsilon = 0.01){
 }
 
 void Drive::Stop(){
+    wpi::outs() << "Drive Stop!\n";
     // cease your actions!!
     m_differentialDrive.ArcadeDrive(0.0, 0.0, true);
 }
