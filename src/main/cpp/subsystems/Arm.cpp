@@ -40,7 +40,7 @@ void Arm::ArmLower(){
         this->ArmStop(); 
     } 
     else { 
-        m_armMotor.Set(-0.25);  // TODO: Will need to be tuned
+        m_armMotor.Set(-0.35);  // TODO: Will need to be tuned
     } 
 }
 
