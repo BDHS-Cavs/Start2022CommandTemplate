@@ -60,7 +60,7 @@ void Drive::AutoMotivate() {
     double currentAngle = m_drive_gyro.GetAngle();
 
     double autoLeftSpeed  = 0.0;
-    double autoRightSpeed = 0.1;
+    double autoRightSpeed = 0.25;
     double targetAngle    = 180.0; //TODO - find a way to calculate targetAngle
 
    //calculate target angle
@@ -69,22 +69,25 @@ void Drive::AutoMotivate() {
     if (this->CompareAngles(currentAngle, targetAngle, 0.01))
     {
         {
-            // do nothing
+                wpi::outs() << "In do nothing in compareangles!\n";
         }
     }
     else
     {
         m_differentialDrive.ArcadeDrive(autoLeftSpeed, autoRightSpeed, true);
+            wpi::outs() << "Driving to target!\n";
     };
 }
 
 bool Drive::CompareAngles(double x, double y, double epsilon = 0.01){
     if (fabs(x - y) < epsilon){
         return true;
+            wpi::outs() << "returning true in compareangles!\n";
     }
     else
     {
         return false;
+            wpi::outs() << "returning false in compareangles!\n";
     };
 }
 
