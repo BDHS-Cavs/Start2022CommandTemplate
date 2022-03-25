@@ -16,7 +16,7 @@
 class Shooter: public frc2::SubsystemBase {
 
 private:
-    frc::Spark m_shooterMotor{4};
+    frc::Spark m_shooterMotor{5}; //tuned value
 
 public:
     Shooter();

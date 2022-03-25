@@ -31,12 +31,12 @@ void Shooter::SimulationPeriodic() {
 // Put methods for controlling this subsystem here and call from commands
 void Shooter::Intake(){
     // Intake balls
-    m_shooterMotor.Set(0.5); //TODO: Will need to be tuned
+    m_shooterMotor.Set(1.0); //TODO: Will need to be tuned
 }
 
 void Shooter::Expel(){
     // shoot balls
-    m_shooterMotor.Set(-0.5); //TODO: Will need to be tuned
+    m_shooterMotor.Set(-1.0); //TODO: Will need to be tuned
 }
 
 void Shooter::ShooterStop(){
