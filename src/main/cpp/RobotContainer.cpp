@@ -18,14 +18,14 @@
 
 RobotContainer* RobotContainer::m_robotContainer = NULL;
 
-RobotContainer::RobotContainer() : m_autonomousCommand(&m_drive, &m_limelight) {
+RobotContainer::RobotContainer() : m_autonomousCommand(&m_drive, &m_limelight, &m_shooter) {
     frc::SmartDashboard::PutData(&m_arm);
     frc::SmartDashboard::PutData(&m_drive);
     frc::SmartDashboard::PutData(&m_limelight);
     frc::SmartDashboard::PutData(&m_shooter);
 
     // SmartDashboard Buttons
-    frc::SmartDashboard::PutData("Autonomous Command", new AutonomousCommand(&m_drive, &m_limelight));
+    frc::SmartDashboard::PutData("Autonomous Command", new AutonomousCommand(&m_drive, &m_limelight, &m_shooter));
 	
     ConfigureButtonBindings();
 
@@ -39,7 +39,7 @@ RobotContainer::RobotContainer() : m_autonomousCommand(&m_drive, &m_limelight) {
         },
          {&m_drive}));
 
-    m_chooser.SetDefaultOption("Autonomous Command", new AutonomousCommand(&m_drive, &m_limelight));
+    m_chooser.SetDefaultOption("Autonomous Command", new AutonomousCommand(&m_drive, &m_limelight, &m_shooter));
     frc::SmartDashboard::PutData("Auto Mode", &m_chooser);
 }
 

@@ -13,15 +13,18 @@
 #include "commands/AutonomousCommand.h"
 #include <wpi/raw_ostream.h> // for wpi outs()
 
-AutonomousCommand::AutonomousCommand(Drive* m_drive, Limelight* m_limelight)
+AutonomousCommand::AutonomousCommand(Drive* m_drive, Limelight* m_limelight, Shooter* m_shooter)
 :m_drive(m_drive),
-m_limelight(m_limelight){
+m_limelight(m_limelight),
+m_shooter(m_shooter)
+{
 
     // Use AddRequirements() here to declare subsystem dependencies
     // eg. AddRequirements(m_Subsystem);
     SetName("AutonomousCommand");
     AddRequirements(m_drive);
     AddRequirements(m_limelight);
+    AddRequirements(m_shooter);
 }
 
 // Called just before this Command runs the first time
@@ -32,7 +35,8 @@ void AutonomousCommand::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void AutonomousCommand::Execute() {
     wpi::outs() << "Autonomous Execute!\n";
-    m_drive->AutoMotivate();
+    //m_drive->AutoMotivate();
+    m_shooter->AutoExpel();
 }
 
 // Make this return true when this Command no longer needs to run execute()
