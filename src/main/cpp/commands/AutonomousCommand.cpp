@@ -34,8 +34,9 @@ void AutonomousCommand::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void AutonomousCommand::Execute() {
-    wpi::outs() << "Autonomous Execute!\n";
-    //m_drive->AutoMotivate();
+    // TODO: Remove wpi::outs
+    // wpi::outs() << "Autonomous Execute!\n";
+    // m_drive->AutoMotivate();
     m_shooter->AutoExpel();
 }
 
@@ -46,7 +47,8 @@ bool AutonomousCommand::IsFinished() {
 
 // Called once after isFinished returns true
 void AutonomousCommand::End(bool interrupted) {
-    wpi::outs () << "Autonomous Stop!\n";
+    // TODO: Remove wpi::outs
+    //wpi::outs () << "Autonomous Stop!\n";
     m_drive->Stop();
 }
 
