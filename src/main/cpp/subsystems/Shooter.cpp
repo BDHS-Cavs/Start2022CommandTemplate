@@ -34,26 +34,22 @@ void Shooter::SimulationPeriodic() {
 
 // Put methods for controlling this subsystem here and call from commands
 void Shooter::AutoExpel(){
-    // autonomous -> shoot balls
+
+    // set up time for the shooter to shoot
     units::second_t period = 1_s;
-    m_timer.Reset();
     m_timer.Start();
 
-    wpi::outs() << " Autonomous Shoot -> Timer Count!" << "\n";
-    
-    //if (m_timer.AdvanceIfElapsed(period))
-    if (m_timer.Get() >= 1_s)
+    frc::SmartDashboard::PutNumber("Autonomous Timer", double(m_timer.Get()));
+
+    if (m_timer.HasElapsed(period))
     {
-        //this->ShooterStop();
-        m_timer.Stop();
+        this->ShooterStop();
         wpi::outs() << " Autonomous Shoot -> Stop The Shoot!\n";
-   }
-    else if (m_timer.Get() == 0_s)
+    }
+    else
     {
-        int x = int(m_timer.Get());
-        //this->Expel();
+        this->Expel();
         wpi::outs() << " Autonomous Shoot ->The Ball!\n";
-        std::cout << "The Timer is " << x << "\n";
     }
 }
 
@@ -70,4 +66,5 @@ void Shooter::Expel(){
 void Shooter::ShooterStop(){
     // stop the shooter
     m_shooterMotor.Set(0.0); //TODO: Will need to be tuned
+    m_timer.Stop();
 }
