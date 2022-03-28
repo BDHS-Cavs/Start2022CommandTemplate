@@ -52,6 +52,8 @@ void Drive::SimulationPeriodic() {
 void Drive::Motivate(double leftSpeed, double rightSpeed) {
 
     m_differentialDrive.ArcadeDrive(leftSpeed,rightSpeed, true);
+    frc::SmartDashboard::PutNumber("Drive Left Speed", leftSpeed);
+    frc::SmartDashboard::PutNumber("Drive Right Speed", rightSpeed);
 }
 
 void Drive::AutoMotivate() {
