@@ -11,6 +11,8 @@
 #include "subsystems/Arm.h"
 
 #include <frc/smartdashboard/SmartDashboard.h>
+#include <wpi/raw_ostream.h> // for wpi outs()
+
 
 Arm::Arm(){
     SetName("Arm");
@@ -29,16 +31,25 @@ void Arm::SimulationPeriodic() {
 }
 
 // Put methods for controlling this subsystem here and call from commands
-void Arm::ArmRaise(){
 
-    // Raise Arm
-    m_armMotor.Set(0.5); // TODO: Will need to be tuned
+void Arm::ArmLower(){ 
+    // Lower Arm 
+    if (bottomLimitSwitch.Get())
+    {
+        this->ArmStop();
+        // TODO: Remove Debug Printouts
+        ///wpi::outs() << " From Autonomous Command-> Stop the Arm!\n";
+    }
+    else { 
+        m_armMotor.Set(-0.35); 
+        // TODO: Remove Debug Printouts
+        //wpi::outs() << " From Autonomous Command-> Raise the Arm!\n";
+    } 
 }
 
-void Arm::ArmLower(){
-
-    // Lower Arm
-    m_armMotor.Set(-0.5);  // TODO: Will need to be tuned
+void Arm::ArmRaise(){
+    // Raise Arm
+    m_armMotor.Set(1.0);
 }
 
 void Arm::ArmStop(){

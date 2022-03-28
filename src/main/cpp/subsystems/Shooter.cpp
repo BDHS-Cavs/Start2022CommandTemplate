@@ -11,6 +11,8 @@
 #include "subsystems/Shooter.h"
 
 #include <frc/smartdashboard/SmartDashboard.h>
+#include <wpi/raw_ostream.h> // for wpi outs()
+
 
 Shooter::Shooter(){
     SetName("Shooter");
@@ -29,17 +31,22 @@ void Shooter::SimulationPeriodic() {
 }
 
 // Put methods for controlling this subsystem here and call from commands
-void Shooter::Intake(){
-    // Intake balls
-    m_shooterMotor.Set(0.5); //TODO: Will need to be tuned
-}
 
 void Shooter::Expel(){
-    // shoot balls
-    m_shooterMotor.Set(-0.5); //TODO: Will need to be tuned
+    // Shoot balls
+    m_shooterMotor.Set(-1.0); 
+    //TODO: Remove Debug Printouts
+    wpi::outs() << " From Autonomous Command-> Shoot The Ball!\n";
+}
+
+void Shooter::Intake(){
+    // Intake balls
+    m_shooterMotor.Set(1.0); 
 }
 
 void Shooter::ShooterStop(){
-    // stop the shooter
-    m_shooterMotor.Set(0.0); //TODO: Will need to be tuned
+    // Stop the shooter
+    m_shooterMotor.Set(0.0); 
+    //TODO: Remove Debug Printouts
+    wpi::outs() << " From Autonomous Command-> Shooter Stop!\n";
 }

@@ -10,6 +10,7 @@
 
 #pragma once
 
+#include <frc/DigitalInput.h> 
 #include <frc/motorcontrol/Spark.h>
 #include <frc2/command/SubsystemBase.h>
 
@@ -17,12 +18,13 @@ class Arm: public frc2::SubsystemBase {
 
 private:
     frc::Spark m_armMotor{4}; //tuned value
-
+    frc::DigitalInput bottomLimitSwitch{2}; 
 public:
     Arm();
+
     void Periodic() override;
     void SimulationPeriodic() override;
-    void ArmRaise();
     void ArmLower();
+    void ArmRaise();
     void ArmStop();
 };

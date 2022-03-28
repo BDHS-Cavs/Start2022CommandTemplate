@@ -14,6 +14,7 @@
 
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <frc2/command/CommandScheduler.h>
+#include <wpi/raw_ostream.h> // for wpi outs()
 
 void Robot::RobotInit() {
   my_gyro.Calibrate();
@@ -56,6 +57,7 @@ void Robot::AutonomousPeriodic() {
   // tell us some details about our gyro
   frc::SmartDashboard::PutNumber("Gyro Angle", my_gyro.GetAngle());
   frc::SmartDashboard::PutNumber("Gyro Rotation Speed", my_gyro.GetRate());
+  m_autonomousCommand->Execute();
 }
 
 void Robot::TeleopInit() {

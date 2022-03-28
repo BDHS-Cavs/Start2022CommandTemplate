@@ -10,6 +10,7 @@
 
 #include "subsystems/Drive.h"
 #include <frc/smartdashboard/SmartDashboard.h>
+#include <wpi/raw_ostream.h> // for wpi outs()
 
 Drive::Drive(){
     SetName("Drive");
@@ -35,6 +36,8 @@ Drive::Drive(){
 
     AddChild("m_leftRear", &m_leftRear);
     m_leftRear.SetInverted(false);
+
+    AddChild("m_drive_gyro", &m_drive_gyro);
 }
 
 void Drive::Periodic() {
@@ -49,4 +52,47 @@ void Drive::SimulationPeriodic() {
 void Drive::Motivate(double leftSpeed, double rightSpeed) {
 
     m_differentialDrive.ArcadeDrive(leftSpeed,rightSpeed, true);
+}
+
+void Drive::AutoMotivate() {
+
+    wpi::outs() << "Drive AutoMotivate!\n";
+    double currentAngle = m_drive_gyro.GetAngle();
+
+    double autoLeftSpeed  = 0.25;
+    double autoRightSpeed = 0.25;
+    double targetAngle    = 180.0; //TODO - find a way to calculate targetAngle
+
+   //calculate target angle
+   //targetAngle = (currentAngle - 180.0); //thar be dragons here!
+
+    if (this->CompareAngles(currentAngle, targetAngle, 0.01))
+    {
+        {
+                wpi::outs() << "In do nothing in compareangles!\n";
+        }
+    }
+    else
+    {
+        m_differentialDrive.ArcadeDrive(autoLeftSpeed, autoRightSpeed, true);
+            wpi::outs() << "Driving to target!\n";
+    };
+}
+
+bool Drive::CompareAngles(double x, double y, double epsilon = 0.01){
+    if (fabs(x - y) < epsilon){
+        return true;
+            wpi::outs() << "returning true in compareangles!\n";
+    }
+    else
+    {
+        return false;
+            wpi::outs() << "returning false in compareangles!\n";
+    };
+}
+
+void Drive::Stop(){
+    wpi::outs() << "Drive Stop!\n";
+    // cease your actions!!
+    m_differentialDrive.ArcadeDrive(0.0, 0.0, true);
 }

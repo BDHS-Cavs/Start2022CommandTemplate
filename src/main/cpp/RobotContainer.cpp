@@ -18,14 +18,14 @@
 
 RobotContainer* RobotContainer::m_robotContainer = NULL;
 
-RobotContainer::RobotContainer() : m_autonomousCommand(&m_drive, &m_limelight) {
+RobotContainer::RobotContainer() : m_autonomousCommand(&m_arm, &m_drive, &m_limelight, &m_shooter) {
     frc::SmartDashboard::PutData(&m_arm);
     frc::SmartDashboard::PutData(&m_drive);
     frc::SmartDashboard::PutData(&m_limelight);
     frc::SmartDashboard::PutData(&m_shooter);
 
     // SmartDashboard Buttons
-    frc::SmartDashboard::PutData("Autonomous Command", new AutonomousCommand(&m_drive, &m_limelight));
+    frc::SmartDashboard::PutData("Autonomous Command", new AutonomousCommand(&m_arm, &m_drive, &m_limelight, &m_shooter));
 	
     ConfigureButtonBindings();
 
@@ -39,7 +39,7 @@ RobotContainer::RobotContainer() : m_autonomousCommand(&m_drive, &m_limelight) {
         },
          {&m_drive}));
 
-    m_chooser.SetDefaultOption("Autonomous Command", new AutonomousCommand(&m_drive, &m_limelight));
+    m_chooser.SetDefaultOption("Autonomous Command", new AutonomousCommand(&m_arm, &m_drive, &m_limelight, &m_shooter));
     frc::SmartDashboard::PutData("Auto Mode", &m_chooser);
 }
 
@@ -51,17 +51,15 @@ RobotContainer* RobotContainer::GetInstance() {
 }
 
 void RobotContainer::ConfigureButtonBindings() {
-frc2::JoystickButton m_controllerButton10{&m_controller, (int)frc::XboxController::Button::kStart};
-frc2::JoystickButton m_controllerButton8{&m_controller, (int)frc::XboxController::Button::kRightBumper};
-frc2::JoystickButton m_controllerButton7{&m_controller, (int)frc::XboxController::Button::kLeftBumper};
-frc2::JoystickButton m_controllerButton3{&m_controller, (int)frc::XboxController::Button::kY};
-frc2::JoystickButton m_controllerButton1{&m_controller, (int)frc::XboxController::Button::kB};
+frc2::JoystickButton m_controllerButton2{&m_controller, (int)frc::XboxController::Button::kB}; // Arm raise (2)
+frc2::JoystickButton m_controllerButton4{&m_controller, (int)frc::XboxController::Button::kY}; // Arm lower (4)
+frc2::JoystickButton m_controllerButton5{&m_controller, (int)frc::XboxController::Button::kLeftBumper}; // Intake (5)
+frc2::JoystickButton m_controllerButton6{&m_controller, (int)frc::XboxController::Button::kRightBumper}; // Shoot (6)
 
-m_controllerButton1.WhenHeld(ArmRaiseCommand(&m_arm), true);
-m_controllerButton3.WhenHeld(ArmLowerCommand(&m_arm), true);
-m_controllerButton7.WhenHeld(IntakeCommand(&m_shooter), true);
-m_controllerButton8.WhenHeld(ShootCommand(&m_shooter), true);
-m_controllerButton10.WhenHeld(AutonomousCommand(&m_drive, &m_limelight), true);
+m_controllerButton2.WhenHeld(ArmRaiseCommand(&m_arm), true); // Arm raise (2)
+m_controllerButton4.WhenHeld(ArmLowerCommand(&m_arm), true); // Arm lower (4)
+m_controllerButton5.WhenHeld(IntakeCommand(&m_shooter), true); // Intake (5)
+m_controllerButton6.WhenHeld(ShootCommand(&m_shooter), true); // Shoot (6)
 }
 
 frc::Joystick* RobotContainer::getJoystick() {

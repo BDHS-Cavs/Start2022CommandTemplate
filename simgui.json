@@ -1,0 +1,47 @@
+{
+  "HALProvider": {
+    "Other Devices": {
+      "ADXRS450[0]": {
+        "header": {
+          "open": true
+        }
+      }
+    }
+  },
+  "NTProvider": {
+    "types": {
+      "/FMSInfo": "FMSInfo",
+      "/LiveWindow/Arm": "Subsystem",
+      "/LiveWindow/Arm/ArmMotor": "Motor Controller",
+      "/LiveWindow/Drive": "Subsystem",
+      "/LiveWindow/Drive/DifferentialDrive": "DifferentialDrive",
+      "/LiveWindow/Drive/m_controllerLeft": "Motor Controller",
+      "/LiveWindow/Drive/m_controllerRight": "Motor Controller",
+      "/LiveWindow/Drive/m_drive_gyro": "Gyro",
+      "/LiveWindow/Drive/m_leftFront": "Motor Controller",
+      "/LiveWindow/Drive/m_leftRear": "Motor Controller",
+      "/LiveWindow/Drive/m_rightFront": "Motor Controller",
+      "/LiveWindow/Drive/m_rightRear": "Motor Controller",
+      "/LiveWindow/Limelight": "Subsystem",
+      "/LiveWindow/Shooter": "Subsystem",
+      "/LiveWindow/Shooter/ShooterMotor": "Motor Controller",
+      "/LiveWindow/Ungrouped/ADXRS450_Gyro[0]": "Gyro",
+      "/LiveWindow/Ungrouped/DigitalInput[2]": "Digital Input",
+      "/LiveWindow/Ungrouped/Scheduler": "Scheduler",
+      "/SmartDashboard/Arm": "Subsystem",
+      "/SmartDashboard/Auto Mode": "String Chooser",
+      "/SmartDashboard/Autonomous Command": "Command",
+      "/SmartDashboard/Drive": "Subsystem",
+      "/SmartDashboard/Limelight": "Subsystem",
+      "/SmartDashboard/Shooter": "Subsystem"
+    }
+  },
+  "NetworkTables": {
+    "SmartDashboard": {
+      "Shooter": {
+        "open": true
+      },
+      "open": true
+    }
+  }
+}

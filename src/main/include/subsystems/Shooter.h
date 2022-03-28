@@ -23,7 +23,7 @@ public:
 
     void Periodic() override;
     void SimulationPeriodic() override;
-    void Intake();
     void Expel();
+    void Intake();
     void ShooterStop();
 };
