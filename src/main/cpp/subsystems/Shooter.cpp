@@ -33,38 +33,22 @@ void Shooter::SimulationPeriodic() {
 }
 
 // Put methods for controlling this subsystem here and call from commands
-void Shooter::AutoExpel(){
 
-    // set up time for the shooter to shoot
-    units::second_t period = 1_s;
-    m_timer.Start();
-
-    frc::SmartDashboard::PutNumber("Autonomous Timer", double(m_timer.Get()));
-
-    if (m_timer.HasElapsed(period))
-    {
-        this->ShooterStop();
-        wpi::outs() << " Autonomous Shoot -> Stop The Shoot!\n";
-    }
-    else
-    {
-        this->Expel();
-        wpi::outs() << " Autonomous Shoot ->The Ball!\n";
-    }
+void Shooter::Expel(){
+    // Shoot balls
+    m_shooterMotor.Set(-1.0); 
+    //TODO: Remove Debug Printouts
+    wpi::outs() << " From Autonomous Command-> Shoot The Ball!\n";
 }
 
 void Shooter::Intake(){
     // Intake balls
-    m_shooterMotor.Set(1.0); //TODO: Will need to be tuned
-}
-
-void Shooter::Expel(){
-    // shoot balls
-    m_shooterMotor.Set(-1.0); //TODO: Will need to be tuned
+    m_shooterMotor.Set(1.0); 
 }
 
 void Shooter::ShooterStop(){
-    // stop the shooter
-    m_shooterMotor.Set(0.0); //TODO: Will need to be tuned
-    m_timer.Stop();
+    // Stop the shooter
+    m_shooterMotor.Set(0.0); 
+    //TODO: Remove Debug Printouts
+    wpi::outs() << " From Autonomous Command-> Shooter Stop!\n";
 }

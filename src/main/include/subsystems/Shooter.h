@@ -12,20 +12,17 @@
 
 #include <frc/motorcontrol/Spark.h>
 #include <frc2/command/SubsystemBase.h>
-#include <frc/Timer.h>
 
 class Shooter: public frc2::SubsystemBase {
 
 private:
     frc::Spark m_shooterMotor{5}; //tuned value
-    frc::Timer m_timer; 
 
 public:
     Shooter();
 
     void Periodic() override;
     void SimulationPeriodic() override;
-    void AutoExpel();
     void Expel();
     void Intake();
     void ShooterStop();
