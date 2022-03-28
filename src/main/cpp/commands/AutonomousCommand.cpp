@@ -57,7 +57,9 @@ void AutonomousCommand::Execute() {
 
     if (m_timer.Get() >= units::second_t(0_s) && m_timer.Get() < period1)
     {
-        m_shooter->Expel();
+        // Intake & Expel are swapped
+        // Intake "really" means shoot
+        m_shooter->Intake();
     }
     else if(m_timer.Get() >= period1 && m_timer.Get() < period2)
     {
