@@ -59,7 +59,7 @@ void Drive::AutoMotivate() {
     wpi::outs() << "Drive AutoMotivate!\n";
     double currentAngle = m_drive_gyro.GetAngle();
 
-    double autoLeftSpeed  = 0.0;
+    double autoLeftSpeed  = 0.25;
     double autoRightSpeed = 0.25;
     double targetAngle    = 180.0; //TODO - find a way to calculate targetAngle
 

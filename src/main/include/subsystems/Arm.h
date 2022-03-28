@@ -21,9 +21,10 @@ private:
     frc::DigitalInput bottomLimitSwitch{2}; 
 public:
     Arm();
+
     void Periodic() override;
     void SimulationPeriodic() override;
-    void ArmRaise();
     void ArmLower();
+    void ArmRaise();
     void ArmStop();
 };

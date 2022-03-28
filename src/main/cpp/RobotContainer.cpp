@@ -18,14 +18,14 @@
 
 RobotContainer* RobotContainer::m_robotContainer = NULL;
 
-RobotContainer::RobotContainer() : m_autonomousCommand(&m_drive, &m_limelight, &m_shooter) {
+RobotContainer::RobotContainer() : m_autonomousCommand(&m_arm, &m_drive, &m_limelight, &m_shooter) {
     frc::SmartDashboard::PutData(&m_arm);
     frc::SmartDashboard::PutData(&m_drive);
     frc::SmartDashboard::PutData(&m_limelight);
     frc::SmartDashboard::PutData(&m_shooter);
 
     // SmartDashboard Buttons
-    frc::SmartDashboard::PutData("Autonomous Command", new AutonomousCommand(&m_drive, &m_limelight, &m_shooter));
+    frc::SmartDashboard::PutData("Autonomous Command", new AutonomousCommand(&m_arm, &m_drive, &m_limelight, &m_shooter));
 	
     ConfigureButtonBindings();
 
@@ -39,7 +39,7 @@ RobotContainer::RobotContainer() : m_autonomousCommand(&m_drive, &m_limelight, &
         },
          {&m_drive}));
 
-    m_chooser.SetDefaultOption("Autonomous Command", new AutonomousCommand(&m_drive, &m_limelight, &m_shooter));
+    m_chooser.SetDefaultOption("Autonomous Command", new AutonomousCommand(&m_arm, &m_drive, &m_limelight, &m_shooter));
     frc::SmartDashboard::PutData("Auto Mode", &m_chooser);
 }
 
@@ -55,13 +55,11 @@ frc2::JoystickButton m_controllerButton2{&m_controller, (int)frc::XboxController
 frc2::JoystickButton m_controllerButton4{&m_controller, (int)frc::XboxController::Button::kY}; // Arm lower (4)
 frc2::JoystickButton m_controllerButton5{&m_controller, (int)frc::XboxController::Button::kLeftBumper}; // Intake (5)
 frc2::JoystickButton m_controllerButton6{&m_controller, (int)frc::XboxController::Button::kRightBumper}; // Shoot (6)
-//frc2::JoystickButton m_controllerButton8{&m_controller, (int)frc::XboxController::Button::kStart}; // debug Autonomous Mode (8)
 
 m_controllerButton2.WhenHeld(ArmRaiseCommand(&m_arm), true); // Arm raise (2)
 m_controllerButton4.WhenHeld(ArmLowerCommand(&m_arm), true); // Arm lower (4)
 m_controllerButton5.WhenHeld(IntakeCommand(&m_shooter), true); // Intake (5)
 m_controllerButton6.WhenHeld(ShootCommand(&m_shooter), true); // Shoot (6)
-//m_controllerButton8.WhenHeld(AutonomousCommand(&m_drive, &m_limelight), true); // debug Autonomous Mode (8)
 }
 
 frc::Joystick* RobotContainer::getJoystick() {

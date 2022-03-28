@@ -13,8 +13,6 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <wpi/raw_ostream.h> // for wpi outs()
 
-#include <iostream>
-#include <string.h>
 
 Shooter::Shooter(){
     SetName("Shooter");
