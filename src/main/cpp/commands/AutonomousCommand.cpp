@@ -42,9 +42,9 @@ void AutonomousCommand::Initialize() {
 void AutonomousCommand::Execute() {
 
     units::second_t period1 = 1_s;
-    units::second_t period2 = 4_s;
+    units::second_t period2 = 3_s;
     units::second_t period3 = 6_s;
-    units::second_t period4 = 8_s;
+    units::second_t period4 = 9_s;
     
     if(m_firstTime)
     {

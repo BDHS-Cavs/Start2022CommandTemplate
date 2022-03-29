@@ -72,8 +72,8 @@ void Drive::AutoMotivateRotate() {
 
     wpi::outs() << "Drive AutoMotivateRotate!\n";
 
-    double autoXSpeed = 0.0;
-    double autoYSpeed = 0.55;
+    double autoXSpeed = 0.25;
+    double autoYSpeed = -0.85;
 
     //double currentAngle = m_drive_gyro.GetAngle();
     //double targetAngle = 180.0; //TODO - find a way to calculate targetAngle
