@@ -37,13 +37,9 @@ void Arm::ArmLower(){
     if (bottomLimitSwitch.Get())
     {
         this->ArmStop();
-        // TODO: Remove Debug Printouts
-        ///wpi::outs() << " From Autonomous Command-> Stop the Arm!\n";
     }
     else { 
         m_armMotor.Set(-0.35); 
-        // TODO: Remove Debug Printouts
-        //wpi::outs() << " From Autonomous Command-> Raise the Arm!\n";
     } 
 }
 

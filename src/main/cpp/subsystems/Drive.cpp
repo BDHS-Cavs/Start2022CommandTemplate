@@ -52,13 +52,10 @@ void Drive::SimulationPeriodic() {
 void Drive::Motivate(double leftSpeed, double rightSpeed) {
 
     m_differentialDrive.ArcadeDrive(leftSpeed,rightSpeed, true);
-    frc::SmartDashboard::PutNumber("Drive Left Speed", leftSpeed);
-    frc::SmartDashboard::PutNumber("Drive Right Speed", rightSpeed);
 }
 
 void Drive::AutoMotivateBackward() {
 
-    wpi::outs() << "Drive AutoMotivateBackward!\n";
     double autoXSpeed  = 0.65;
     double autoYSpeed  = 0.0;
 
@@ -70,30 +67,13 @@ void Drive::AutoMotivateBackward() {
 
 void Drive::AutoMotivateRotate() {
 
-    wpi::outs() << "Drive AutoMotivateRotate!\n";
-
     double autoXSpeed = 0.25;
     double autoYSpeed = -0.85;
 
-    //double currentAngle = m_drive_gyro.GetAngle();
-    //double targetAngle = 180.0; //TODO - find a way to calculate targetAngle
+    m_differentialDrive.ArcadeDrive(autoXSpeed, autoYSpeed, true);
 
-   //calculate target angle
-   //targetAngle = (currentAngle - 180.0); //thar be dragons here!
-
-    //if (this->CompareAngles(currentAngle, targetAngle, 0.01))
-    //{
-    //    {
-    //            wpi::outs() << "In do nothing in compareangles!\n";
-    //    }
-    //}
-    //else
-    //{
-        m_differentialDrive.ArcadeDrive(autoXSpeed, autoYSpeed, true);
-
-        frc::SmartDashboard::PutNumber("AutoMotivateRotate X Speed", autoXSpeed);
-        frc::SmartDashboard::PutNumber("AutomotivateRotate Y Speed", autoYSpeed);
-    //};
+    frc::SmartDashboard::PutNumber("AutoMotivateRotate X Speed", autoXSpeed);
+    frc::SmartDashboard::PutNumber("AutomotivateRotate Y Speed", autoYSpeed);
 }
 
 bool Drive::CompareAngles(double x, double y, double epsilon = 0.01)
@@ -111,7 +91,6 @@ bool Drive::CompareAngles(double x, double y, double epsilon = 0.01)
 }
 
 void Drive::Stop(){
-    wpi::outs() << "Drive Stop!\n";
     // cease your actions!!
     m_differentialDrive.ArcadeDrive(0.0, 0.0, true);
 }

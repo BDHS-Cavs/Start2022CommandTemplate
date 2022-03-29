@@ -35,8 +35,6 @@ void Shooter::SimulationPeriodic() {
 void Shooter::Expel(){
     // Shoot balls
     m_shooterMotor.Set(-1.0); 
-    //TODO: Remove Debug Printouts
-    wpi::outs() << " From Autonomous Command-> Shoot The Ball!\n";
 }
 
 void Shooter::Intake(){
@@ -47,6 +45,4 @@ void Shooter::Intake(){
 void Shooter::ShooterStop(){
     // Stop the shooter
     m_shooterMotor.Set(0.0); 
-    //TODO: Remove Debug Printouts
-    wpi::outs() << " From Autonomous Command-> Shooter Stop!\n";
 }
