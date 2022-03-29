@@ -39,7 +39,8 @@ public:
     void Periodic() override;
     void SimulationPeriodic() override;
     void Motivate(double leftSpeed, double rightSpeed);
-    void AutoMotivate();
+    void AutoMotivateBackward();
+    void AutoMotivateRotate();
     void Stop();
     bool CompareAngles(double x, double y, double epsilon);
 

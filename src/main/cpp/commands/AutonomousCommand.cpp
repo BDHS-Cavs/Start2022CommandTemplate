@@ -42,8 +42,8 @@ void AutonomousCommand::Initialize() {
 void AutonomousCommand::Execute() {
 
     units::second_t period1 = 1_s;
-    units::second_t period2 = 3_s;
-    units::second_t period3 = 5_s;
+    units::second_t period2 = 4_s;
+    units::second_t period3 = 6_s;
     
     if(m_firstTime)
     {
@@ -64,7 +64,7 @@ void AutonomousCommand::Execute() {
     else if(m_timer.Get() >= period1 && m_timer.Get() < period2)
     {
         m_shooter->ShooterStop();
-        m_drive->AutoMotivate();
+        m_drive->AutoMotivateBackward();
     }
     else if(m_timer.Get() >= period2 && m_timer.Get() < period3)
     {
