@@ -71,11 +71,12 @@ void Drive::AutoMotivateBackward() {
 void Drive::AutoMotivateRotate() {
 
     wpi::outs() << "Drive AutoMotivateRotate!\n";
-    double currentAngle = m_drive_gyro.GetAngle();
 
-    double autoXSpeed  = 0.65;
-    double autoYSpeed  = 0.0;
-    double targetAngle = 180.0; //TODO - find a way to calculate targetAngle
+    double autoXSpeed = 0.0;
+    double autoYSpeed = -0.25;
+
+    //double currentAngle = m_drive_gyro.GetAngle();
+    //double targetAngle = 180.0; //TODO - find a way to calculate targetAngle
 
    //calculate target angle
    //targetAngle = (currentAngle - 180.0); //thar be dragons here!
@@ -88,10 +89,10 @@ void Drive::AutoMotivateRotate() {
     //}
     //else
     //{
-    //    m_differentialDrive.ArcadeDrive(autoXSpeed, autoYSpeed, true);
-    //    wpi::outs() << "Driving to target!\n";
-    //    frc::SmartDashboard::PutNumber("AutoMotivateRotate X Speed", autoXSpeed);
-    //    frc::SmartDashboard::PutNumber("AutomotivateRotate Y Speed", autoYSpeed);
+        m_differentialDrive.ArcadeDrive(autoXSpeed, autoYSpeed, true);
+
+        frc::SmartDashboard::PutNumber("AutoMotivateRotate X Speed", autoXSpeed);
+        frc::SmartDashboard::PutNumber("AutomotivateRotate Y Speed", autoYSpeed);
     //};
 }
 
@@ -105,7 +106,7 @@ bool Drive::CompareAngles(double x, double y, double epsilon = 0.01)
     else
     {
         return false;
-            wpi::outs() << "returning false in compareangles!\n";
+        wpi::outs() << "returning false in compareangles!\n";
     };
 }
 

@@ -44,6 +44,7 @@ void AutonomousCommand::Execute() {
     units::second_t period1 = 1_s;
     units::second_t period2 = 4_s;
     units::second_t period3 = 6_s;
+    units::second_t period4 = 8_s;
     
     if(m_firstTime)
     {
@@ -59,16 +60,20 @@ void AutonomousCommand::Execute() {
     {
         // Intake & Expel are swapped
         // Intake "really" means shoot
-        m_shooter->Intake();
+        m_shooter->Intake(); // shoot the ball
     }
     else if(m_timer.Get() >= period1 && m_timer.Get() < period2)
     {
-        m_shooter->ShooterStop();
-        m_drive->AutoMotivateBackward();
+        m_shooter->ShooterStop(); // stop the shooter
+        m_drive->AutoMotivateBackward(); // drive backwards 8 to 10 feet - about 3 seconds
     }
     else if(m_timer.Get() >= period2 && m_timer.Get() < period3)
     {
-        m_arm->ArmLower();
+        m_arm->ArmLower(); // lower the arm
+    }
+    else if(m_timer.Get() >= period3 && m_timer.Get() < period4)
+    {
+        m_drive->AutoMotivateRotate(); // turn 180 degrees to the left
     }
     else
     {
