@@ -21,16 +21,9 @@
 #include <frc2/command/button/JoystickButton.h>
 
 // our includes
-#include "commands/ArmLowerCommand.h"
-#include "commands/ArmRaiseCommand.h"
 #include "commands/AutonomousCommand.h"
-#include "commands/IntakeCommand.h"
-#include "commands/ShootCommand.h"
 
-#include "subsystems/Arm.h"
 #include "subsystems/Drive.h"
-#include "subsystems/Limelight.h"
-#include "subsystems/Shooter.h"
 
 class RobotContainer {
 
@@ -40,10 +33,7 @@ public:
     static RobotContainer* GetInstance();
 
     // The robot's subsystems
-    Arm       m_arm;
     Drive     m_drive;
-    Limelight m_limelight;
-    Shooter   m_shooter;
 
     // Get the control values
     frc::Joystick *getJoystick();

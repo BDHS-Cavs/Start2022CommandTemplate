@@ -15,14 +15,11 @@
 #include <frc2/command/CommandHelper.h>
 #include <frc/Timer.h>
 
-#include "subsystems/Arm.h"
 #include "subsystems/Drive.h"
-#include "subsystems/Limelight.h"
-#include "subsystems/Shooter.h"
 
 class AutonomousCommand: public frc2::CommandHelper<frc2::CommandBase, AutonomousCommand> {
 public:
-    explicit AutonomousCommand(Arm* m_arm, Drive* m_drive, Limelight* m_limelight, Shooter* m_shooter);
+    explicit AutonomousCommand(Drive* m_drive);
 
 void Initialize() override;
 void Execute() override;
@@ -32,11 +29,5 @@ bool RunsWhenDisabled() const override;
 
 
 private:
-    bool       m_firstTime;
-    frc::Timer m_timer; 
-
-    Arm*       m_arm;
     Drive*     m_drive;
-    Limelight* m_limelight;
-    Shooter*   m_shooter;
 };
