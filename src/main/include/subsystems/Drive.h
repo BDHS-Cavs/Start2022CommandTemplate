@@ -10,26 +10,20 @@
 
 #pragma once
 
-#include <frc/ADXRS450_Gyro.h>
 #include <frc/drive/DifferentialDrive.h>
-#include <frc/motorcontrol/MotorControllerGroup.h>
+// #include <frc/motorcontrol/MotorControllerGroup.h> Needed? Only have one motor per side
 #include <frc/motorcontrol/Spark.h>
 #include <frc2/command/SubsystemBase.h>
 
 class Drive: public frc2::SubsystemBase {
 
 private:
-    frc::ADXRS450_Gyro m_drive_gyro;
 
     // left
-    frc::Spark m_leftFront{0};
-    frc::Spark m_leftRear{1};
-    frc::MotorControllerGroup m_controllerLeft{m_leftFront, m_leftRear};
-
+    frc::Spark m_controllerLeft{0};
+    
     // right
-    frc::Spark m_rightFront{2};
-    frc::Spark m_rightRear{3};
-    frc::MotorControllerGroup m_controllerRight{m_rightFront, m_rightRear};
+    frc::Spark m_controllerRight{1};
 
     frc::DifferentialDrive m_differentialDrive{m_controllerLeft, m_controllerRight};
 
