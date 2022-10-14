@@ -21,7 +21,7 @@ private:
 
     // left
     frc::Spark m_controllerLeft{0};
-    
+
     // right
     frc::Spark m_controllerRight{1};
 
