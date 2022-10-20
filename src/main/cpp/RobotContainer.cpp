@@ -18,8 +18,9 @@
 
 RobotContainer* RobotContainer::m_robotContainer = NULL;
 
-RobotContainer::RobotContainer() : m_autonomousCommand(&m_drive) {
+RobotContainer::RobotContainer() : m_autonomousCommand(&m_drive, &m_arm) {
     frc::SmartDashboard::PutData(&m_drive);
+    frc::SmartDashboard::PutData(&m_arm);
 
     ConfigureButtonBindings();
 

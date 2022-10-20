@@ -24,6 +24,8 @@
 #include "commands/AutonomousCommand.h"
 
 #include "subsystems/Drive.h"
+#include "subsystems/Arm.h"
+
 
 class RobotContainer {
 
@@ -34,6 +36,7 @@ public:
 
     // The robot's subsystems
     Drive     m_drive;
+    Arm       m_arm;
 
     // Get the control values
     frc::Joystick *getJoystick();
