@@ -21,6 +21,10 @@
 #include <frc2/command/button/JoystickButton.h>
 
 // our includes
+#include "commands/ArmTurnLeftCommand.h"
+#include "commands/ArmTurnRightCommand.h"
+#include "commands/ShooterMoveCommand.h"
+
 #include "commands/AutonomousCommand.h"
 
 #include "subsystems/Drive.h"
