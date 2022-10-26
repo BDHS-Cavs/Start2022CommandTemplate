@@ -47,6 +47,10 @@ RobotContainer* RobotContainer::GetInstance() {
 }
 
 void RobotContainer::ConfigureButtonBindings() {
+frc2::JoystickButton m_controllerButton2{&m_controller, (int)frc::XboxController::Button::kB}; // Arm raise (2)
+frc2::JoystickButton m_controllerButton4{&m_controller, (int)frc::XboxController::Button::kY}; // Arm lower (4)
+frc2::JoystickButton m_controllerButton5{&m_controller, (int)frc::XboxController::Button::kLeftBumper}; // Intake (5)
+frc2::JoystickButton m_controllerButton6{&m_controller, (int)frc::XboxController::Button::kRightBumper}; // Shoot (6)
 }
 
 frc::Joystick* RobotContainer::getJoystick() {
