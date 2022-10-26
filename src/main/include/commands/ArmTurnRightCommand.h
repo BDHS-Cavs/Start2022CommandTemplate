@@ -15,11 +15,11 @@
 
 #include "subsystems/Arm.h"
 
-class ShooterMoveCommand: public frc2::CommandHelper<frc2::CommandBase, ShooterMoveCommand> {
+class ArmTurnRightCommand: public frc2::CommandHelper<frc2::CommandBase, ArmTurnRightCommand> {
 
 public:
 
-    explicit ShooterMoveCommand(Arm* m_arm);
+    explicit ArmTurnRightCommand(Arm* m_arm);
 
     void Initialize() override;
     void Execute() override;

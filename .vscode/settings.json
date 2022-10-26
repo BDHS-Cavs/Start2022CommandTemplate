@@ -15,4 +15,8 @@
     "**/*~": true
   },
   "C_Cpp.default.configurationProvider": "vscode-wpilib",
+  "files.associations": {
+    "chrono": "cpp",
+    "cmath": "cpp"
+  },
 }

@@ -13,13 +13,17 @@
 
 #include <wpi/raw_ostream.h> // for wpi outs()
 
-AutonomousCommand::AutonomousCommand(Drive* m_drive)
-:m_drive(m_drive)
+AutonomousCommand::AutonomousCommand(Drive* m_drive, Arm* m_arm, Shooter* m_shooter)
+:m_drive(m_drive),
+m_arm(m_arm),
+m_shooter(m_shooter)
 {
     // Use AddRequirements() here to declare subsystem dependencies
     // eg. AddRequirements(m_Subsystem);
     SetName("AutonomousCommand");
     AddRequirements(m_drive);
+    AddRequirements(m_arm);
+    AddRequirements(m_shooter);
 }
 
 // Called just before this Command runs the first time

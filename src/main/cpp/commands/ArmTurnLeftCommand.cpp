@@ -10,35 +10,36 @@
 
 // ROBOTBUILDER TYPE: Command.
 
-#include "commands/ShooterMoveCommand.h"
+#include "commands/ArmTurnLeftCommand.h"
 
-ShooterMoveCommand::ShooterMoveCommand(Arm* m_arm)
+ArmTurnLeftCommand::ArmTurnLeftCommand(Arm* m_arm)
 :m_arm(m_arm){
 
     // Use AddRequirements() here to declare subsystem dependencies
     // eg. AddRequirements(m_Subsystem);
-    SetName("ShooterMoveCommand");
+    SetName("ArmTurnLeftCommand");
     AddRequirements(m_arm);
 }
 
 // Called just before this Command runs the first time
-void ShooterMoveCommand::Initialize() {
+void ArmTurnLeftCommand::Initialize() {
+   m_arm->ArmTurnLeft();
 }
 
 // Called repeatedly when this Command is scheduled to run
-void ShooterMoveCommand::Execute() {
+void ArmTurnLeftCommand::Execute() {
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool ShooterMoveCommand::IsFinished() {
+bool ArmTurnLeftCommand::IsFinished() {
     return false;
 }
 
 // Called once after isFinished returns true
-void ShooterMoveCommand::End(bool interrupted) {
+void ArmTurnLeftCommand::End(bool interrupted) {
     m_arm->ArmStop();
 }
 
-bool ShooterMoveCommand::RunsWhenDisabled() const {
+bool ArmTurnLeftCommand::RunsWhenDisabled() const {
     return false;
 }
