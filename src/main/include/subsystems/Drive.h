@@ -10,29 +10,37 @@
 
 #pragma once
 
-#include <frc2/command/SubsystemBase.h>
+//#include <frc/ADXRS450_Gyro.h>
 #include <frc/drive/DifferentialDrive.h>
 #include <frc/motorcontrol/MotorControllerGroup.h>
 #include <frc/motorcontrol/Spark.h>
+#include <frc2/command/SubsystemBase.h>
 
 class Drive: public frc2::SubsystemBase {
+
 private:
-// left
-frc::Spark m_leftFront{0};
-frc::Spark m_leftRear{1};
-frc::MotorControllerGroup m_controllerLeft{m_leftFront, m_leftRear};
+    //frc::ADXRS450_Gyro m_drive_gyro;
 
-// right
-frc::Spark m_rightFront{2};
-frc::Spark m_rightRear{3};
-frc::MotorControllerGroup m_controllerRight{m_rightFront, m_rightRear};
+    // left
+    frc::Spark m_leftFront{0};
+    frc::Spark m_leftRear{1};
+    frc::MotorControllerGroup m_controllerLeft{m_leftFront, m_leftRear};
 
-frc::DifferentialDrive m_differentialDrive{m_controllerLeft, m_controllerRight};
+    // right
+    frc::Spark m_rightFront{2};
+    frc::Spark m_rightRear{4};
+    frc::MotorControllerGroup m_controllerRight{m_rightFront, m_rightRear};
+
+    frc::DifferentialDrive m_differentialDrive{m_controllerRight, m_controllerLeft};
 
 public:
-Drive();
+    Drive();
+	
     void Periodic() override;
     void SimulationPeriodic() override;
     void Motivate(double leftSpeed, double rightSpeed);
+    void AutoMotivateBackward();
+    void AutoMotivateRotate();
+    void Stop();
+    bool CompareAngles(double x, double y, double epsilon);
 };
-

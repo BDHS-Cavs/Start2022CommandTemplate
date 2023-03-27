@@ -10,6 +10,7 @@
 
 #include "subsystems/Drive.h"
 #include <frc/smartdashboard/SmartDashboard.h>
+#include <wpi/raw_ostream.h> // for wpi outs()
 
 Drive::Drive(){
     SetName("Drive");
@@ -35,6 +36,8 @@ Drive::Drive(){
 
     AddChild("m_leftRear", &m_leftRear);
     m_leftRear.SetInverted(false);
+
+    //AddChild("m_drive_gyro", &m_drive_gyro);
 }
 
 void Drive::Periodic() {
@@ -48,5 +51,46 @@ void Drive::SimulationPeriodic() {
 // Functions called by robot commands
 void Drive::Motivate(double leftSpeed, double rightSpeed) {
 
-    m_differentialDrive.ArcadeDrive(leftSpeed,rightSpeed, true);
+    m_differentialDrive.ArcadeDrive(leftSpeed, rightSpeed, true);
+}
+
+void Drive::AutoMotivateBackward() {
+
+    double autoXSpeed  = 0.65;
+    double autoYSpeed  = 0.0;
+
+    m_differentialDrive.ArcadeDrive(autoXSpeed, autoYSpeed, true);
+
+    frc::SmartDashboard::PutNumber("AutoMotivateBackward X Speed", autoXSpeed);
+    frc::SmartDashboard::PutNumber("AutomotivateBackward Y Speed", autoYSpeed);
+}
+
+void Drive::AutoMotivateRotate() {
+
+    double autoXSpeed = 0.25;
+    double autoYSpeed = -0.85;
+
+    m_differentialDrive.ArcadeDrive(autoXSpeed, autoYSpeed, true);
+
+    frc::SmartDashboard::PutNumber("AutoMotivateRotate X Speed", autoXSpeed);
+    frc::SmartDashboard::PutNumber("AutomotivateRotate Y Speed", autoYSpeed);
+}
+
+bool Drive::CompareAngles(double x, double y, double epsilon = 0.01)
+{
+    if (fabs(x - y) < epsilon)
+    {
+        return true;
+        wpi::outs() << "returning true in compareangles!\n";
+    }
+    else
+    {
+        return false;
+        wpi::outs() << "returning false in compareangles!\n";
+    };
+}
+
+void Drive::Stop(){
+    // cease your actions!!
+    m_differentialDrive.ArcadeDrive(0.0, 0.0, true);
 }
